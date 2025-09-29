@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task-list</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="container">
+    <h2>Tasks</h2>
+    <input type="text" id="taskInput" placeholder="Enter new task">
+    <button onclick="addTask()">Add</button>
+    
+    <!-- Pre-added tasks -->
+    <ul id="taskList">
+      <li>E-Commerce Task 1 <button onclick="deleteTask(this)">Delete</button></li>
+      <li>Portfolio Task 2 <button onclick="deleteTask(this)">Delete</button></li>
+      <li>Book-My-Show Task 3 <button onclick="deleteTask(this)">Delete</button></li>
+    </ul>
+  </div>
+
+  <script>
+    function addTask() {
+      const taskInput = document.getElementById("taskInput");
+      const taskList = document.getElementById("taskList");
+
+      if (taskInput.value === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      const li = document.createElement("li");
+      li.innerHTML = `${taskInput.value} <button onclick="deleteTask(this)">Delete</button>`;
+      taskList.appendChild(li);
+
+      taskInput.value = ""; // clear input
+    }
+    function deleteTask(button) {
+      button.closest("li").remove();
+    }
+  </script>
+</body>
+</html>
